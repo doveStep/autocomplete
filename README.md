@@ -27,6 +27,7 @@ I left it like that in the interest of time. To fix it, I'd need to update webpa
 ```sh
  $ npm install -g node
  $ npm install -g gulp
+ $ npm install
  ```
  
  ## Compile and Test
