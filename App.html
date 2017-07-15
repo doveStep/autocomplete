@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Financial Institutions</h1>
+
+  <form class="form-horizontal col-12 col-sm-6">
+    <div class="form-group">
+      <div class="input-group input-group-lg"
+           uib-dropdown>
+        <input type="text"
+               class="form-control"
+               placeholder="Search by name"
+               autocomplete="off"
+               href id="simple-dropdown"
+               uib-dropdown-toggle
+               ng-model="$ctrl.searchInput"
+               ng-value="$ctrl.searchInput">
+        <span class="input-group-btn">
+          <button class="btn btn-primary"
+                  type="button"
+                  ng-click="$ctrl.updateSearchResults($ctrl.banks, $ctrl.searchInput)">
+            Go!
+          </button>
+        </span>
+        <ul class="dropdown-menu"
+            uib-dropdown-menu
+            aria-labelledby="simple-dropdown"
+            ng-show="$ctrl.searchInput">
+          <li ng-repeat="bank in $ctrl.banks | filter:$ctrl.searchInput | unique:name | limitTo:10"
+              ng-click="$ctrl.updateSearchInput(bank.name)">
+            <a href>{{bank.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6"></div>
+  </form>
+
+  <div ng-show="$ctrl.searchResults.length">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Url</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="bank in $ctrl.searchResults | unique">
+        <tr>
+          <td>{{bank.name}}</td>
+          <td>{{bank.type}}</td>
+          <td>{{bank.url}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-show="$ctrl.searchResults.length === 0"
+       class="row col-12">
+    <h4>Your search returned 0 results. Try clicking 'Go!' with no input to view the full list of financial institutions.
+    </h4>
+  </div>
+
+</div>
