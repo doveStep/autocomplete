@@ -19,7 +19,7 @@ gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 gulp.task('deploy', function() {
-  return gulp.src('./dist/**/*')
+  return gulp.src('./src/**/*')
     .pipe(ghPages());
 });
 
